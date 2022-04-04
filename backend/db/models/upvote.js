@@ -4,8 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     questionId: DataTypes.INTEGER
   }, {});
-  Upvote.associate = function(models) {
+  Upvote.associate = function (models) {
     // associations can be defined here
+    Upvote.belongsTo(models.Question, { foreignKey: 'questionId' });
+    Upvote.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Upvote;
 };
