@@ -27,13 +27,17 @@ export default function LoginFormPage() {
   }
   return (
     <>
-      <img className='background-image' src={image} />
+      <div className='background-image-container'>
+        <img className='background-image' src={image} />
+      </div>
       <div className='login-form-container'>
         <form onSubmit={handleSubmit} className='login-form'>
           <h1>Login</h1>
-          <ul className='error-list'>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
+          <div className='error-list-container'>
+            <ul className='error-list'>
+              {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            </ul>
+          </div>
           <div className='form-group'>
             <label>
               Username or Email
@@ -42,8 +46,8 @@ export default function LoginFormPage() {
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
-              required
               className='form-input-credential'
+              required
             />
           </div>
           <div className='form-group'>
@@ -54,8 +58,8 @@ export default function LoginFormPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
               className='form-input-password'
+              required
             />
           </div>
 
