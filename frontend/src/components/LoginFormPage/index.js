@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './LoginForm.css';
 
 export default function LoginFormPage() {
@@ -34,29 +34,30 @@ export default function LoginFormPage() {
         <div className='form-group'>
           <label>
             Username or Email
-            <input
-              type="text"
-              value={credential}
-              onChange={(e) => setCredential(e.target.value)}
-              required
-              className='form-input'
-            />
           </label>
+          <input
+            type="text"
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+            className='form-input-credential'
+          />
         </div>
         <div className='form-group'>
           <label>
             Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className='form-input'
-            />
           </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className='form-input-password'
+          />
         </div>
 
         <button type="submit" class='login-button'>Log In</button>
+        <Link to='/signup' className='sign-up-link'>Don't have an account?</Link>
       </form>
     </div>
   );
