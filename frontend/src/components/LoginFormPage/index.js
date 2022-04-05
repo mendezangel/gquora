@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import './LoginForm.css';
+import image from '../../images/splash-page-background.jpg';
 
 export default function LoginFormPage() {
   const dispatch = useDispatch();
@@ -25,40 +26,43 @@ export default function LoginFormPage() {
       });
   }
   return (
-    <div className='login-form-container'>
-      <form onSubmit={handleSubmit} className='login-form'>
-        <h1>Login</h1>
-        <ul className='error-list'>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <div className='form-group'>
-          <label>
-            Username or Email
-          </label>
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-            className='form-input-credential'
-          />
-        </div>
-        <div className='form-group'>
-          <label>
-            Password
-          </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className='form-input-password'
-          />
-        </div>
+    <>
+      <img className='background-image' src={image} />
+      <div className='login-form-container'>
+        <form onSubmit={handleSubmit} className='login-form'>
+          <h1>Login</h1>
+          <ul className='error-list'>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+          <div className='form-group'>
+            <label>
+              Username or Email
+            </label>
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+              className='form-input-credential'
+            />
+          </div>
+          <div className='form-group'>
+            <label>
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className='form-input-password'
+            />
+          </div>
 
-        <button type="submit" class='login-button'>Log In</button>
-        <Link to='/signup' className='sign-up-link'>Don't have an account?</Link>
-      </form>
-    </div>
+          <button type="submit" class='login-button'>Log In</button>
+          <Link to='/signup' className='sign-up-link'>Don't have an account?</Link>
+        </form>
+      </div>
+    </>
   );
 }
