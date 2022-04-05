@@ -31,7 +31,8 @@ export const newQuestion = (question) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  dispatch(setQuestion(data))
+  console.log(data);
+  // dispatch(setQuestion(data))
 }
 
 const initialState = {};
