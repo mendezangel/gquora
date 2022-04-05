@@ -27,7 +27,9 @@ export default function LoginFormPage() {
   }
   return (
     <>
-      <img className='background-image' src={image} />
+      <div className='background-image-container'>
+        <img className='background-image' src={image} />
+      </div>
       <div className='login-form-container'>
         <form onSubmit={handleSubmit} className='login-form'>
           <h1>Login</h1>

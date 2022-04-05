@@ -2,6 +2,15 @@
   background-image: url("../../images/splash-page-background.jpg");
 } */
 
+.background-image-container {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat center center;
+  background-size: cover;
+}
+
 .background-image {
   position: absolute;
   z-index: -1;
