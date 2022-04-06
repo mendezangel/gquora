@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 
 export default function QuestionCard() {
   const dispatch = useDispatch();
-  const questions = useSelector(state => state.question);
+  const questions = useSelector(state => state.question.list);
 
   useEffect(() => {
     dispatch(getQuestion());
   }, [dispatch]);
-  console.log(questions.list);
+  console.log(questions);
   return (
     <div className='questions-container'>
       {questions.map(question => {
@@ -19,7 +19,7 @@ export default function QuestionCard() {
             <div className='user-title-container'>
               <div className='user-container'>
                 <Link to={`/users/${question.ownerId}`}>
-                  <h1>{question.User.username}</h1>
+                  <h2>{question.User.username}</h2>
                 </Link>
               </div>
               <div className='title-container'>
@@ -29,7 +29,7 @@ export default function QuestionCard() {
               </div>
             </div>
             <div className='question-body'>
-
+              <p className='question-body-text'>{question.description}</p>
             </div>
           </div>
         );
