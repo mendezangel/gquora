@@ -3,6 +3,7 @@
 
 import { csrfFetch } from './csrf';
 
+const LOAD = 'question/load';
 const SET_QUESTION = 'question/newQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
 
@@ -17,6 +18,20 @@ const setQuestion = (question) => {
 const removeQuestion = () => {
   return {
     type: REMOVE_QUESTION
+  }
+}
+
+const load = list => ({
+  type: LOAD,
+  list,
+});
+
+export const getQuestion = () => async dispatch => {
+  const response = await csrfFetch('/api/questions');
+  if (response.ok) {
+    const list = await response.json();
+    dispatch(load(list));
+    console.log('you hit the return for the list');
   }
 }
 
@@ -52,6 +67,17 @@ const questionReducer = (state = initialState, action) => {
       newState = { ...state };
       newState.question = null;
       return newState;
+    case LOAD:
+      const allQuestions = {};
+      action.list.forEach(question => {
+        allQuestions[question.id] = question;
+      });
+
+      return {
+        ...allQuestions,
+        ...state,
+        list: action.list
+      };
     default:
       return state;
   }
