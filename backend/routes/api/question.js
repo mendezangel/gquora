@@ -6,6 +6,11 @@ const { Question } = require('../../db/models');
 
 const router = express.Router();
 
+router.get('/', asyncHandler(async (req, res, next) => {
+  const questions = await Question.findAll();
+  return res.json(questions);
+}));
+
 const validateQuestion = [
   check('title')
     .exists({ checkFalsy: true })
