@@ -32,7 +32,6 @@ export const getQuestion = () => async dispatch => {
     const list = await response.json();
     dispatch(load(list));
     console.log('you hit the return for the list');
-    return list;
   }
 }
 
