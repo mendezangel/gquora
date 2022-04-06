@@ -26,7 +26,6 @@ export default function NewQuestionForm() {
       setErrors([]);
       setTitle('');
       setDescription('');
-      console.log('you should be hitting the redirect');
       history.push(`/questions/${question.id}`);
       //TODO setup express route and all that for /questions/:questionId
     }
