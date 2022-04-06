@@ -22,7 +22,7 @@ const removeQuestion = () => {
 
 export const newQuestion = (question) => async (dispatch) => {
   const { ownerId, title, description } = question;
-  const response = await csrfFetch('/api/question/new', {
+  const response = await csrfFetch('/api/questions/new', {
     method: 'POST',
     body: JSON.stringify({
       ownerId,
@@ -31,8 +31,12 @@ export const newQuestion = (question) => async (dispatch) => {
     }),
   });
   const data = await response.json();
-  console.log(data);
-  // dispatch(setQuestion(data))
+  if (data.message === 'Success') {
+    dispatch(setQuestion(data.question));
+    return data.question;
+  } else {
+    return data;
+  }
 }
 
 const initialState = {};

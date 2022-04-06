@@ -10,6 +10,6 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('question', questionRouter);
+router.use('/questions', questionRouter);
 
 module.exports = router;

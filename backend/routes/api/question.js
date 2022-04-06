@@ -34,3 +34,5 @@ router.post('/new', validateQuestion, asyncHandler(async (req, res, next) => {
     res.json({ errors, message: 'Failure' })
   }
 }))
+
+module.exports = router;
