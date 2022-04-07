@@ -56,6 +56,17 @@ router.delete('/:id', asyncHandler(async (req, res) => {
   if (!question) throw new Error('Cannot find question');
   await question.destroy(); // deleting question
   return res.json({ id: question.id }); //responding with question id
-}))
+}));
+
+router.put('/:id', asyncHandler(async (req, res) => {
+  const id = +req.params.id;
+  delete req.body.id;
+  const question = await Question.findByPk(id);
+  question.update({
+    title: req.body.title,
+    description: req.body.description
+  });
+  return res.json(question);
+}));
 
 module.exports = router;

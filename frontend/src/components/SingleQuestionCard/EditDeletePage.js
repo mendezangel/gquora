@@ -20,6 +20,11 @@ export default function EditDeletePage() {
     history.push(`/questions/${questionId}/edit`)
   };
 
+  const cancelButton = (e) => {
+    e.preventDefault();
+    history.push(`/questions/${questionId}`);
+  };
+
   return (
     <div className='edit-delete-page-div'>
       <div className='modal'>
@@ -40,7 +45,7 @@ export default function EditDeletePage() {
             </button>
           </div>
           <div className='cancel-btn-container btn-container'>
-            <button className='cancel-btn btn'>
+            <button className='cancel-btn btn' onClick={cancelButton}>
               <p className='cancel-btn-text text'>Cancel</p>
             </button>
           </div>

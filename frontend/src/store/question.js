@@ -7,6 +7,7 @@ const LOAD = 'question/load';
 const SET_QUESTION = 'question/newQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
 const GET_ONE = 'question/getSingleQuestion';
+const UPDATE_QUESTION = 'question/updateQuestion';
 
 //action creator for a new question, this returns an action(js object)
 const setQuestion = (question) => {
@@ -32,6 +33,11 @@ const getOne = question => ({
   type: GET_ONE,
   question
 });
+
+const updateOne = question => ({
+  type: UPDATE_QUESTION,
+  question
+})
 
 export const getQuestion = () => async dispatch => {
   const response = await csrfFetch('/api/questions');
@@ -79,6 +85,22 @@ export const deleteQuestion = id => async dispatch => {
   }
 }
 
+export const updateQuestion = data => async dispatch => {
+  const response = await csrfFetch(`/api/questions/${data.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (response.ok) {
+    const question = await response.json();
+    dispatch(updateOne(question));
+    return question;
+  }
+}
+
 const initialState = {};
 
 const questionReducer = (state = initialState, action) => {
@@ -104,6 +126,14 @@ const questionReducer = (state = initialState, action) => {
         list: action.list
       };
     case GET_ONE:
+      return {
+        ...state,
+        [action.question.id]: {
+          ...state[action.question.id],
+          ...action.question,
+        },
+      };
+    case UPDATE_QUESTION:
       return {
         ...state,
         [action.question.id]: {
