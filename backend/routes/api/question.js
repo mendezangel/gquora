@@ -46,7 +46,7 @@ router.post('/new', validateQuestion, asyncHandler(async (req, res, next) => {
 
 router.get('/:id', asyncHandler(async (req, res) => {
   const id = +req.params.id;
-  const question = Question.findByPk(id);
+  const question = await Question.findByPk(id, { include: ['User'] });
   return res.json(question);
 }))
 

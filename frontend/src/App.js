@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import HomePage from './components/HomePage';
 import NewQuestionForm from "./components/NewQuestionForm";
+import SingleQuestionCard from "./components/SingleQuestionCard";
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
 
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route path='/questions/new'>
             <NewQuestionForm />
+          </Route>
+          <Route path='/questions/:questionId'>
+            <SingleQuestionCard />
           </Route>
         </Switch>
       )}

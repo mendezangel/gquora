@@ -60,8 +60,7 @@ export const newQuestion = (question) => async (dispatch) => {
 }
 
 export const getOneQuestion = id => async dispatch => {
-  const response = csrfFetch(`/api/questions/${id}`);
-
+  const response = await csrfFetch(`/api/questions/${id}`);
   if (response.ok) {
     const question = await response.json();
     dispatch(getOne(question));

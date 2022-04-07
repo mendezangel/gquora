@@ -12,7 +12,6 @@ export default function QuestionCard() {
   useEffect(() => {
     dispatch(getQuestion());
   }, [dispatch]);
-  console.log(questions);
   return (
     <div className='questions-container'>
       {questions?.map(question => {
