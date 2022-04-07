@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { deleteQuestion } from '../../store/question';
 import './EditDeletePage.css';
 
@@ -14,6 +14,12 @@ export default function EditDeletePage() {
     dispatch(deleteQuestion(questionId));
     history.push('/');
   }
+
+  const redirectToEdit = e => {
+    e.preventDefault();
+    history.push(`/questions/${questionId}/edit`)
+  };
+
   return (
     <div className='edit-delete-page-div'>
       <div className='modal'>
@@ -29,7 +35,7 @@ export default function EditDeletePage() {
             </button>
           </div>
           <div className='edit-btn-container btn-container'>
-            <button className='edit-btn btn'>
+            <button className='edit-btn btn' onClick={redirectToEdit}>
               <p className='edit-btn-text text'>Edit Question</p>
             </button>
           </div>
