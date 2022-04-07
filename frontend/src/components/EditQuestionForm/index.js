@@ -54,8 +54,8 @@ export default function EditQuestionForm() {
         </div>
         <div className='edit-form-buttons-container'>
           <div className='edit-form-buttons-wrapper'>
-            <button onClick={cancelButton} className='edit-form-cancel-button'>Cancel</button>
-            <button type='submit' className='edit-form-save-button'>Save</button>
+            <button onClick={cancelButton} className='edit-form-cancel-button edit-form-buttons'>Cancel</button>
+            <button type='submit' className='edit-form-save-button edit-form-buttons'>Save</button>
           </div>
         </div>
       </form>
