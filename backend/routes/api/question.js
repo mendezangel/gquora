@@ -44,4 +44,10 @@ router.post('/new', validateQuestion, asyncHandler(async (req, res, next) => {
   }
 }))
 
+router.get('/:id', asyncHandler(async (req, res) => {
+  const id = +req.params.id;
+  const question = Question.findByPk(id);
+  return res.json(question);
+}))
+
 module.exports = router;

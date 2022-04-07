@@ -6,6 +6,7 @@ import { csrfFetch } from './csrf';
 const LOAD = 'question/load';
 const SET_QUESTION = 'question/newQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
+const GET_ONE = 'question/getSingleQuestion';
 
 //action creator for a new question, this returns an action(js object)
 const setQuestion = (question) => {
@@ -26,12 +27,16 @@ const load = list => ({
   list,
 });
 
+const getOne = question => ({
+  type: GET_ONE,
+  question
+});
+
 export const getQuestion = () => async dispatch => {
   const response = await csrfFetch('/api/questions');
   if (response.ok) {
     const list = await response.json();
     dispatch(load(list));
-    console.log('you hit the return for the list');
   }
 }
 
@@ -51,6 +56,15 @@ export const newQuestion = (question) => async (dispatch) => {
     return data.question;
   } else {
     return data;
+  }
+}
+
+export const getOneQuestion = id => async dispatch => {
+  const response = csrfFetch(`/api/questions/${id}`);
+
+  if (response.ok) {
+    const question = await response.json();
+    dispatch(getOne(question));
   }
 }
 
@@ -77,6 +91,14 @@ const questionReducer = (state = initialState, action) => {
         ...allQuestions,
         ...state,
         list: action.list
+      };
+    case GET_ONE:
+      return {
+        ...state,
+        [action.question.id]: {
+          ...state[action.question.id],
+          ...action.question,
+        },
       };
     default:
       return state;
