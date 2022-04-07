@@ -11,7 +11,6 @@ export default function HomePage() {
   if (!sessionUser) return <Redirect to='/login' />
   return (
     <div>
-      <h1>Home Page</h1>
       <QuestionCard />
     </div>
   )
