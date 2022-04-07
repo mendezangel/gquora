@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getQuestion } from '../../store/question';
 import { Link } from 'react-router-dom';
+import Navigation from '../Navigation';
+import './QuestionCard.css';
 
 export default function QuestionCard() {
   const dispatch = useDispatch();
@@ -10,21 +12,20 @@ export default function QuestionCard() {
   useEffect(() => {
     dispatch(getQuestion());
   }, [dispatch]);
-  console.log(questions);
   return (
     <div className='questions-container'>
-      {questions.map(question => {
+      {questions?.map(question => {
         return (
           <div className='card-container' key={question.id}>
             <div className='user-title-container'>
-              <div className='user-container'>
-                <Link to={`/users/${question.ownerId}`}>
-                  <h2>{question.User.username}</h2>
-                </Link>
-              </div>
               <div className='title-container'>
                 <Link to={`/questions/${question.id}`}>
                   <h3>{question.title}</h3>
+                </Link>
+              </div>
+              <div className='user-container'>
+                <Link to={`/users/${question.ownerId}`}>
+                  <p>{question.User.username}</p>
                 </Link>
               </div>
             </div>

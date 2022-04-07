@@ -6,6 +6,7 @@ import { csrfFetch } from './csrf';
 const LOAD = 'question/load';
 const SET_QUESTION = 'question/newQuestion';
 const REMOVE_QUESTION = 'question/removeQuestion';
+const GET_ONE = 'question/getSingleQuestion';
 
 //action creator for a new question, this returns an action(js object)
 const setQuestion = (question) => {
@@ -15,9 +16,10 @@ const setQuestion = (question) => {
   }
 }
 
-const removeQuestion = () => {
+const removeQuestion = id => {
   return {
-    type: REMOVE_QUESTION
+    type: REMOVE_QUESTION,
+    questionId: id
   }
 }
 
@@ -26,12 +28,16 @@ const load = list => ({
   list,
 });
 
+const getOne = question => ({
+  type: GET_ONE,
+  question
+});
+
 export const getQuestion = () => async dispatch => {
   const response = await csrfFetch('/api/questions');
   if (response.ok) {
     const list = await response.json();
     dispatch(load(list));
-    console.log('you hit the return for the list');
   }
 }
 
@@ -54,6 +60,25 @@ export const newQuestion = (question) => async (dispatch) => {
   }
 }
 
+export const getOneQuestion = id => async dispatch => {
+  const response = await csrfFetch(`/api/questions/${id}`);
+  if (response.ok) {
+    const question = await response.json();
+    dispatch(getOne(question));
+  }
+}
+
+export const deleteQuestion = id => async dispatch => {
+  const response = await csrfFetch(`/api/questions/${id}`, {
+    method: 'DELETE'
+  })
+
+  if (response.ok) {
+    const { id } = await response.json();
+    dispatch(removeQuestion(id));
+  }
+}
+
 const initialState = {};
 
 const questionReducer = (state = initialState, action) => {
@@ -65,7 +90,7 @@ const questionReducer = (state = initialState, action) => {
       return newState;
     case REMOVE_QUESTION:
       newState = { ...state };
-      newState.question = null;
+      delete newState[action.questionId];
       return newState;
     case LOAD:
       const allQuestions = {};
@@ -77,6 +102,14 @@ const questionReducer = (state = initialState, action) => {
         ...allQuestions,
         ...state,
         list: action.list
+      };
+    case GET_ONE:
+      return {
+        ...state,
+        [action.question.id]: {
+          ...state[action.question.id],
+          ...action.question,
+        },
       };
     default:
       return state;

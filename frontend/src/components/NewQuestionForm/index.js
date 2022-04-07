@@ -26,7 +26,7 @@ export default function NewQuestionForm() {
       setErrors([]);
       setTitle('');
       setDescription('');
-      history.push(`/questions/${question.id}`);
+      history.push(`/`);
       //TODO setup express route and all that for /questions/:questionId
     }
   }
