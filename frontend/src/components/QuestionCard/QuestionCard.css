@@ -29,6 +29,7 @@
 
 .user-container>a>p {
   font-family: 'Poppins', sans-serif;
+  padding-top: 5px;
 }
 
 .title-container>a {

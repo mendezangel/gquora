@@ -48,6 +48,14 @@ router.get('/:id', asyncHandler(async (req, res) => {
   const id = +req.params.id;
   const question = await Question.findByPk(id, { include: ['User'] });
   return res.json(question);
+}));
+
+router.delete('/:id', asyncHandler(async (req, res) => {
+  const id = +req.params.id;
+  const question = await Question.findByPk(id);
+  if (!question) throw new Error('Cannot find question');
+  await question.destroy(); // deleting question
+  return res.json({ id: question.id }); //responding with question id
 }))
 
 module.exports = router;

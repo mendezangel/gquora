@@ -16,9 +16,10 @@ const setQuestion = (question) => {
   }
 }
 
-const removeQuestion = () => {
+const removeQuestion = id => {
   return {
-    type: REMOVE_QUESTION
+    type: REMOVE_QUESTION,
+    questionId: id
   }
 }
 
@@ -67,6 +68,17 @@ export const getOneQuestion = id => async dispatch => {
   }
 }
 
+export const deleteQuestion = id => async dispatch => {
+  const response = await csrfFetch(`/api/questions/${id}`, {
+    method: 'DELETE'
+  })
+
+  if (response.ok) {
+    const { id } = await response.json();
+    dispatch(removeQuestion(id));
+  }
+}
+
 const initialState = {};
 
 const questionReducer = (state = initialState, action) => {
@@ -78,7 +90,7 @@ const questionReducer = (state = initialState, action) => {
       return newState;
     case REMOVE_QUESTION:
       newState = { ...state };
-      newState.question = null;
+      delete newState[action.questionId];
       return newState;
     case LOAD:
       const allQuestions = {};
