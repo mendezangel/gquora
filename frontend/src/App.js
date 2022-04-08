@@ -20,10 +20,10 @@ function App() {
   }, [dispatch]);
   return isLoaded && (
     <>
-      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
           <Route path='/' exact>
+            <Navigation isLoaded={isLoaded} />
             <HomePage />
           </Route>
           <Route path="/login">
@@ -33,15 +33,19 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/questions/new'>
+            <Navigation isLoaded={isLoaded} />
             <NewQuestionForm />
           </Route>
           <Route path='/questions/:questionId' exact>
+            <Navigation isLoaded={isLoaded} />
             <SingleQuestionCard />
           </Route>
           <Route path='/questions/:questionId/edit-delete-page' exact>
+            <Navigation isLoaded={isLoaded} />
             <EditDeletePage />
           </Route>
           <Route path='/questions/:questionId/edit' exact>
+            <Navigation isLoaded={isLoaded} />
             <EditQuestionForm />
           </Route>
         </Switch>
