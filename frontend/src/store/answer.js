@@ -29,11 +29,8 @@ const loadAnswer = (id) => {
 }
 
 export const getAnswer = (questionId) => async (dispatch) => {
-  console.log('you hit the get answer thunk');
   const response = await csrfFetch(`/api/answers/${questionId}`);
-  console.log('you made it out of get answer thunk');
   const list = await response.json();
-  console.log('list in thunk', list);
   dispatch(load(list));
   return list;
 }

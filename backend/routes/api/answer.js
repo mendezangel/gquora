@@ -7,12 +7,12 @@ const { Answer } = require('../../db/models');
 const router = express.Router();
 
 router.get('/:questionId', asyncHandler(async (req, res) => {
-  // const { questionId } = req.params;
-  console.log('\n\nquestion Id \n\n', req.params);
+  const questionId = +req.params.questionId;
 
   const answers = await Answer.findAll({
     include: ['User'],
-    where: { questionId }
+    where: { questionId },
+    order: [['createdAt', 'DESC']]
   })
 
   return res.json(answers);

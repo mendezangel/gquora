@@ -7,12 +7,22 @@ export default function AnswersUnderQuestion() {
   const dispatch = useDispatch();
   const { questionId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  const answers = useSelector(state => state.answer);
+  const storeAnswers = useSelector(state => state.answer);
 
   const [description, setDescription] = useState('');
   const [error, setError] = useState();
+  const [answers, setAnswers] = useState({});
 
   const updateDescription = e => setDescription(e.target.value);
+
+  useEffect(() => {
+    async function test() {
+      setAnswers(await dispatch(getAnswer(questionId)));
+    }
+    test();
+  }, [dispatch]);
+
+  console.log(answers)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -21,22 +31,20 @@ export default function AnswersUnderQuestion() {
     const answer = await dispatch(newAnswer(data));
     // console.log(answer);
     if (answer.message === 'Success') {
-      setDescription('')
+      setDescription('');
       setError('');
+      setAnswers(await dispatch(getAnswer(questionId)));
     } else {
       setError(answer.errors[0]);
-      console.log('error', error);
     }
   }
+
 
   const inputPlaceholder = () => {
     if (error) return error;
     return 'Add an answer...'
   }
 
-  useEffect(() => {
-    dispatch(getAnswer());
-  }, [dispatch]);
 
   return (
     <div className='answers-wrapper'>
