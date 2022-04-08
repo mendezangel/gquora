@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
   return isLoaded && (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
           <Route path='/' exact>

@@ -24,6 +24,21 @@ module.exports = {
         title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
       },
+      {
+        ownerId: 1,
+        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+      },
+      {
+        ownerId: 1,
+        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+      },
+      {
+        ownerId: 1,
+        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+      },
     ], {});
   },
 

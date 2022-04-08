@@ -1,33 +1,26 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }) {
-  const sessionUser = useSelector(state => state.session.user);
-
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
-    );
-  }
+function Navigation() {
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <div className='nav-bar-wrapper'>
+      <div className='nav-bar-left'>
+        <h3>GQuora</h3>
+        <a href='/' className='fa-house-link'>
+          <i className='fa-solid fa-house fa-xl' />
+        </a>
+      </div>
+      <div className='nav-bar-right'>
+        <ProfileButton />
+        <Link to='/questions/new' className='add-question-link'>
+          <p className='add-question-text'>Add question</p>
+        </Link>
+      </div>
+    </div>
   );
 }
 
