@@ -25,25 +25,31 @@ function ProfileButton() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const logout = (e) => {
+  const logout = async (e) => {
     e.preventDefault();
-    dispatch(sessionActions.logout());
+    await dispatch(sessionActions.logout());
   };
 
   return (
     <>
-      <button onClick={openMenu} className='user-icon-btn'>
-        <i className="fas fa-user-circle fa-xl" />
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      <div className="dropdown" data-dropdown>
+        <button onClick={openMenu} className='user-icon-btn link' data-dropdown-button>
+          <i className="fas fa-user-circle fa-xl" />
+        </button>
+        <div className="dropdown-menu">
+          {showMenu && (
+            <ul className="profile-dropdown">
+              <li>{user.username}</li>
+              <li>{user.email}</li>
+              <li>
+                <button onClick={logout}>Log Out</button>
+              </li>
+            </ul>
+          )}
+        </div>
+      </div>
+      {/*       
+       */}
     </>
   );
 }
