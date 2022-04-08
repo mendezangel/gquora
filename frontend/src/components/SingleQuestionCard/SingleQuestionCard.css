@@ -6,7 +6,8 @@
   align-items: center;
 }
 
-.question-container {
+.question-container,
+.answers-wrapper {
   /* border: solid white 1px; */
   display: flex;
   flex-direction: column;

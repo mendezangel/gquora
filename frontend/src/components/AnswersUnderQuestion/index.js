@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getAnswer, newAnswer } from '../../store/answer';
+import './AnswersUnderQuestion.css';
 
 export default function AnswersUnderQuestion() {
   const dispatch = useDispatch();
   const { questionId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
-  const storeAnswers = useSelector(state => state.answer);
+  const storeAnswers = useSelector(state => state.answer.list);
+  console.log('store answers', storeAnswers);
 
   const [description, setDescription] = useState('');
   const [error, setError] = useState();
@@ -22,7 +24,7 @@ export default function AnswersUnderQuestion() {
     test();
   }, [dispatch]);
 
-  console.log(answers)
+  // console.log('these are the answers', answers)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -54,11 +56,25 @@ export default function AnswersUnderQuestion() {
             <input className='answer-input' onChange={updateDescription} value={description} placeholder={inputPlaceholder()} />
           </div>
           <div className='submit-answer-button-container'>
-            <button type='submit'>post</button>
+            <button type='submit' className='submit-answer-button' >post</button>
           </div>
         </form>
       </div>
-      <div className='displayed-answers-section'></div>
+      <div className='displayed-answers-container'>
+        {storeAnswers?.map(answer => {
+          return (
+            <div className='answer-card' key={answer.id}>
+              <div className='answer-card-user'>
+                <Link to={`/users/${answer.User.id}`}>{answer.User.username}</Link>
+              </div>
+              <div className='answer-card-description'>{answer.answer}</div>
+              {sessionUser.id === answer.User.id &&
+                <button className='delete-answer-button'><i className='fa-solid fa-trash-can fa-xl' /></button>
+              }
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
