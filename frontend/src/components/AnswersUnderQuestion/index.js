@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getAnswer, newAnswer } from '../../store/answer';
+import { getAnswer, newAnswer, deleteAnswer } from '../../store/answer';
 import './AnswersUnderQuestion.css';
 
 export default function AnswersUnderQuestion() {
@@ -9,19 +9,14 @@ export default function AnswersUnderQuestion() {
   const { questionId } = useParams();
   const sessionUser = useSelector(state => state.session.user);
   const storeAnswers = useSelector(state => state.answer.list);
-  console.log('store answers', storeAnswers);
 
   const [description, setDescription] = useState('');
   const [error, setError] = useState();
-  const [answers, setAnswers] = useState({});
 
   const updateDescription = e => setDescription(e.target.value);
 
   useEffect(() => {
-    async function test() {
-      setAnswers(await dispatch(getAnswer(questionId)));
-    }
-    test();
+    dispatch(getAnswer(questionId));
   }, [dispatch]);
 
   // console.log('these are the answers', answers)
@@ -35,7 +30,7 @@ export default function AnswersUnderQuestion() {
     if (answer.message === 'Success') {
       setDescription('');
       setError('');
-      setAnswers(await dispatch(getAnswer(questionId)));
+      await dispatch(getAnswer(questionId));
     } else {
       setError(answer.errors[0]);
     }
@@ -47,6 +42,12 @@ export default function AnswersUnderQuestion() {
     return 'Add an answer...'
   }
 
+  const deleteAnswerOnClick = async (e) => {
+    e.preventDefault();
+    const answerId = e.target.id;
+    await dispatch(deleteAnswer(answerId));
+    await dispatch(getAnswer(questionId));
+  }
 
   return (
     <div className='answers-wrapper'>
@@ -69,7 +70,7 @@ export default function AnswersUnderQuestion() {
               </div>
               <div className='answer-card-description'>{answer.answer}</div>
               {sessionUser.id === answer.User.id &&
-                <button className='delete-answer-button'><i className='fa-solid fa-trash-can fa-xl' /></button>
+                <button className='delete-answer-button' onClick={deleteAnswerOnClick}><i id={answer.id} className='fa-solid fa-trash-can fa-xl' /></button>
               }
             </div>
           )

@@ -41,4 +41,12 @@ router.post('/', validateAnswer, asyncHandler(async (req, res) => {
   };
 }));
 
+router.delete('/:id', asyncHandler(async (req, res) => {
+  const id = +req.params.id;
+  const answer = await Answer.findByPk(id);
+  if (!answer) throw new Error('Cannot find answer.');
+  await answer.destroy();
+  return res.json({ id: answer.id })
+}))
+
 module.exports = router;

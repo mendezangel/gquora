@@ -5,6 +5,7 @@ import { csrfFetch } from "./csrf";
 const GET_ONE = 'answer/getSingleQuestion';
 const SET_ANSWER = 'answer/newAnswer';
 const LOAD = 'answer/load';
+const REMOVE_ONE = 'answer/deleteAnswer';
 
 const load = (list) => {
   return {
@@ -24,6 +25,13 @@ const setAnswer = (answer) => {
 const loadAnswer = (id) => {
   return {
     type: GET_ONE,
+    answerId: id
+  }
+}
+
+const removeAnswer = (id) => {
+  return {
+    type: REMOVE_ONE,
     answerId: id
   }
 }
@@ -51,6 +59,17 @@ export const newAnswer = (answerObj) => async (dispatch) => {
   return answerRes;
 }
 
+export const deleteAnswer = id => async dispatch => {
+  const response = await csrfFetch(`/api/answers/${id}`, {
+    method: 'DELETE'
+  })
+
+  if (response.ok) {
+    const { id } = await response.json();
+    dispatch(removeAnswer(id));
+  }
+}
+
 const initialState = {};
 
 const answerReducer = (state = initialState, action) => {
@@ -70,6 +89,10 @@ const answerReducer = (state = initialState, action) => {
     case SET_ANSWER:
       newState = { ...state };
       newState.answer = action.payload;
+      return newState;
+    case REMOVE_ONE:
+      newState = { ...state };
+      delete newState[action.answerId];
       return newState;
     default:
       return state;
