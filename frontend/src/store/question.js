@@ -108,7 +108,9 @@ const questionReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_QUESTION:
       newState = { ...state };
+      console.log('newsState', newState)
       newState.question = action.payload;
+      console.log('newState after', newState);
       return newState;
     case REMOVE_QUESTION:
       newState = { ...state };

@@ -1,4 +1,4 @@
-.edit-form-page-wrapper {
+.new-question-wrapper {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -6,8 +6,8 @@
   align-items: center;
 }
 
-.edit-form {
-  /* border: solid white 1px; */
+.new-question-form {
+  border: solid white 1px;
   width: 40em;
   height: 40em;
   background-color: #2D3033;
@@ -16,12 +16,12 @@
   padding: 10px;
 }
 
-.edit-form-title-container {
+.new-question-title-container {
   /* background-color: red; */
   height: 6%;
 }
 
-.edit-form-title-input {
+.new-question-title-field {
   background-color: transparent;
   width: 100%;
   height: 100%;
@@ -34,16 +34,16 @@
   transition: 0.2s;
 }
 
-.edit-form-title-input:focus {
+.new-question-title-field:focus {
   outline: none;
   border-bottom: solid #004daa 1px;
 }
 
-.edit-form-description-container {
+.new-question-description-container {
   height: 88%;
 }
 
-.edit-form-description-input {
+.new-question-description-input {
   background-color: transparent;
   border: none;
   width: 100%;
@@ -57,12 +57,12 @@
   transition: 0.2s;
 }
 
-.edit-form-description-input:focus {
+.new-question-description-input:focus {
   outline: none;
   border-bottom: solid #004daa 1px;
 }
 
-.edit-form-buttons-container {
+.new-question-buttons-container {
   /* background-color: red; */
   width: 100%;
   height: 6%;
@@ -72,15 +72,14 @@
   padding: 5px;
 }
 
-.edit-form-buttons-wrapper {
-  /* background-color: red; */
+.new-question-buttons-wrapper {
   margin-top: 11px;
   width: 130px;
   display: flex;
   justify-content: space-between;
 }
 
-.edit-form-buttons {
+.new-question-buttons {
   height: 45%;
   display: flex;
   flex-direction: column;
@@ -91,16 +90,16 @@
   font: inherit;
 }
 
-.edit-form-cancel-button {
+.new-question-cancel-button {
   color: white;
   opacity: 80%;
 }
 
-.edit-form-cancel-button:hover {
+.new-question-cancel-button:hover {
   cursor: pointer;
 }
 
-.edit-form-save-button {
+.new-question-button {
   height: 24px;
   background-color: lightgreen;
   opacity: 90%;
@@ -110,7 +109,21 @@
   color: white;
 }
 
-.edit-form-save-button:hover {
+.new-question-button:hover {
   opacity: 100%;
   cursor: pointer;
+}
+
+.new-question-errors-container {
+  position: absolute;
+  border: solid rgba() 1px;
+  left: 15%;
+  padding: 10px;
+  background-color: rgba(255, 49, 49, 0.3);
+  border-radius: 5px;
+}
+
+.new-question-errors-list {
+  list-style-type: none;
+  color: #CECAC4;
 }

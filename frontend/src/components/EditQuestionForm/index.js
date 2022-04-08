@@ -39,8 +39,6 @@ export default function EditQuestionForm() {
     if (updatedQuestion) history.push(`/questions/${questionId}`)
   }
 
-  // console.log('this is the question', question);
-  // console.log('this is the question id', questionId);
 
   if (!sessionUser) return (<Redirect to='/login' />);
   return (

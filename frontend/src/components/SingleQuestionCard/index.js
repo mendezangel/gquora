@@ -3,6 +3,7 @@ import { getOneQuestion } from '../../store/question';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams, Redirect } from 'react-router-dom';
 import SettingsButton from './SettingsButton';
+import AnswersUnderQuestion from '../AnswersUnderQuestion';
 import './SingleQuestionCard.css';
 
 export default function SingleQuestionCard() {
@@ -12,7 +13,7 @@ export default function SingleQuestionCard() {
   const sessionUser = useSelector(state => state.session.user);
   const question = useSelector(state => state.question[id]);
 
-  const ownerOfQuestion = sessionUser.id === question.ownerId;
+  const ownerOfQuestion = sessionUser.id === question?.ownerId;
 
   useEffect(() => {
     dispatch(getOneQuestion(id));
@@ -37,7 +38,7 @@ export default function SingleQuestionCard() {
         </div>
       </div>
       <div className='answers-container'>
-
+        <AnswersUnderQuestion />
       </div>
     </div>
   )
