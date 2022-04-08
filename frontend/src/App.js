@@ -7,6 +7,7 @@ import HomePage from './components/HomePage';
 import NewQuestionForm from "./components/NewQuestionForm";
 import SingleQuestionCard from "./components/SingleQuestionCard";
 import EditDeletePage from "./components/SingleQuestionCard/EditDeletePage";
+import EditQuestionForm from "./components/EditQuestionForm";
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
 
@@ -37,8 +38,11 @@ function App() {
           <Route path='/questions/:questionId' exact>
             <SingleQuestionCard />
           </Route>
-          <Route path='/questions/:questionId/edit-delete-page'>
+          <Route path='/questions/:questionId/edit-delete-page' exact>
             <EditDeletePage />
+          </Route>
+          <Route path='/questions/:questionId/edit' exact>
+            <EditQuestionForm />
           </Route>
         </Switch>
       )}

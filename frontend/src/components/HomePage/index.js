@@ -7,7 +7,6 @@ import QuestionCard from '../QuestionCard';
 export default function HomePage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser);
   if (!sessionUser) return <Redirect to='/login' />
   return (
     <div>

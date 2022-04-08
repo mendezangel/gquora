@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import { deleteQuestion } from '../../store/question';
 import './EditDeletePage.css';
 
@@ -9,11 +9,22 @@ export default function EditDeletePage() {
   const history = useHistory();
   const { questionId } = useParams();
 
-  const deletePost = e => {
+  const deletePost = async e => {
     e.preventDefault();
-    dispatch(deleteQuestion(questionId));
+    await dispatch(deleteQuestion(questionId));
     history.push('/');
   }
+
+  const redirectToEdit = e => {
+    e.preventDefault();
+    history.push(`/questions/${questionId}/edit`)
+  };
+
+  const cancelButton = (e) => {
+    e.preventDefault();
+    history.push(`/questions/${questionId}`);
+  };
+
   return (
     <div className='edit-delete-page-div'>
       <div className='modal'>
@@ -29,12 +40,12 @@ export default function EditDeletePage() {
             </button>
           </div>
           <div className='edit-btn-container btn-container'>
-            <button className='edit-btn btn'>
+            <button className='edit-btn btn' onClick={redirectToEdit}>
               <p className='edit-btn-text text'>Edit Question</p>
             </button>
           </div>
           <div className='cancel-btn-container btn-container'>
-            <button className='cancel-btn btn'>
+            <button className='cancel-btn btn' onClick={cancelButton}>
               <p className='cancel-btn-text text'>Cancel</p>
             </button>
           </div>
