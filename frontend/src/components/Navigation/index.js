@@ -17,7 +17,7 @@ function Navigation() {
       <div className='nav-bar-right'>
         <ProfileButton />
         <Link to='/questions/new' className='add-question-link'>
-          Add question
+          <p className='add-question-text'>Add question</p>
         </Link>
       </div>
     </div>
