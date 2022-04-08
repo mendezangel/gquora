@@ -11,10 +11,15 @@ export default function SingleQuestionCard() {
   const id = params.questionId;
   const sessionUser = useSelector(state => state.session.user);
   const question = useSelector(state => state.question[id]);
+
+  const ownerOfQuestion = sessionUser.id === question.ownerId;
+
   useEffect(() => {
     dispatch(getOneQuestion(id));
   }, [dispatch]);
+
   if (!sessionUser) return (<Redirect to='/login' />);
+
   return (
     <div className='whole-page-div'>
       <div className='question-container'>
@@ -25,7 +30,7 @@ export default function SingleQuestionCard() {
               {question?.User.username}
             </Link>
           </div>
-          <SettingsButton />
+          {ownerOfQuestion && <SettingsButton />}
         </div>
         <div className='description-container'>
           <p className='description-text'>{question?.description}</p>
