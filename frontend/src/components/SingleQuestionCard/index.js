@@ -36,6 +36,9 @@ export default function SingleQuestionCard() {
           <p className='description-text'>{question?.description}</p>
         </div>
       </div>
+      <div className='answers-container'>
+
+      </div>
     </div>
   )
 }
