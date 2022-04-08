@@ -9,9 +9,9 @@ export default function EditDeletePage() {
   const history = useHistory();
   const { questionId } = useParams();
 
-  const deletePost = e => {
+  const deletePost = async e => {
     e.preventDefault();
-    dispatch(deleteQuestion(questionId));
+    await dispatch(deleteQuestion(questionId));
     history.push('/');
   }
 
