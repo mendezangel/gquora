@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import image from '../../images/splash-page-background.jpg';
+import './SignupFormPage.css';
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -30,49 +31,78 @@ function SignupFormPage() {
 
   return (
     <>
-      <img className='background-image' src={image} />
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Confirm Password
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className="background-image-container">
+        <img className='background-image' src={image} />
+      </div>
+      <div className="signup-form-container">
+        <form onSubmit={handleSubmit} className='signup-form' id='signup-form' >
+          <div className="signup-h1-container">
+            <h1>Sign Up</h1>
+          </div>
+          {errors &&
+            <div className="errors-container">
+              <ul>
+                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+              </ul>
+            </div>
+          }
+          <div className="signup-form-group">
+            <label>
+              Email
+              <input
+                className="email-input input"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="signup-form-group">
+            <label>
+              Username
+              <input
+                className="username-input input"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="signup-form-group">
+            <label>
+              Password
+              <input
+                className="password-input input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="signup-form-group">
+            <label>
+              Confirm Password
+              <input
+                className="confirm-password-input input"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </label>
+          </div>
+          <div className="signup-button-container">
+            <button type="submit" className="signup-button">Sign Up</button>
+            <Link to='/login' className='link-to-login'>
+              Already have an account?
+            </Link>
+          </div>
+
+        </form>
+      </div>
     </>
   );
 }
