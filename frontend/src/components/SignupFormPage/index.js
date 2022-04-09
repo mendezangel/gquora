@@ -39,13 +39,6 @@ function SignupFormPage() {
           <div className="signup-h1-container">
             <h1>Sign Up</h1>
           </div>
-          {errors &&
-            <div className="errors-container">
-              <ul>
-                {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-              </ul>
-            </div>
-          }
           <div className="signup-form-group">
             <label>
               Email
@@ -54,9 +47,12 @@ function SignupFormPage() {
                 type="text"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+              // required
               />
             </label>
+            {errors?.map(error => {
+              if (error.includes('Please provide a valid email.')) return (<p className="signup-error">{error}</p>)
+            })}
           </div>
           <div className="signup-form-group">
             <label>
@@ -66,9 +62,13 @@ function SignupFormPage() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                required
+              // required
               />
             </label>
+            {errors?.map(error => {
+              if (error.includes('Please provide a username with at least 4 characters.')) return (<p className="signup-error">{error}</p>)
+              if (error.includes('Username cannot be an email.')) return (<p className="signup-error">{error}</p>)
+            })}
           </div>
           <div className="signup-form-group">
             <label>
@@ -78,9 +78,12 @@ function SignupFormPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+              // required
               />
             </label>
+            {errors?.map(error => {
+              if (error.includes('Password must be 6 characters or more.')) return (<p className="signup-error">{error}</p>)
+            })}
           </div>
           <div className="signup-form-group">
             <label>
@@ -90,9 +93,12 @@ function SignupFormPage() {
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                required
+              // required
               />
             </label>
+            {errors?.map(error => {
+              if (error.includes('Confirm Password field must be the same as the Password field')) return (<p className="signup-error">{error}</p>)
+            })}
           </div>
           <div className="signup-button-container">
             <button type="submit" className="signup-button">Sign Up</button>

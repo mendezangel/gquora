@@ -75,3 +75,9 @@ body {
   transition: .3s;
   font-family: inherit;
 }
+
+.signup-error {
+  color: red;
+  opacity: 70%;
+  font-size: small;
+}
