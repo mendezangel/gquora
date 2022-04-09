@@ -40,11 +40,11 @@ export default function NewQuestionForm() {
     <div>
       <div className='new-question-wrapper'>
         <form onSubmit={handleSubmit} className='new-question-form'>
-          <div className='new-question-errors-container'>
+          {errors && <div className='new-question-errors-container'>
             <ul className='new-question-errors-list'>
               {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-          </div>
+          </div>}
           <div className='new-question-title-container'>
             <input type='text' className='new-question-title-field' value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Title' />
           </div>
