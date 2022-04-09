@@ -70,7 +70,7 @@ export default function AnswersUnderQuestion() {
                 {answer.User?.username}
               </div>
               <div className='answer-card-description'>{answer.answer}</div>
-              {sessionUser.id === answer.User.id &&
+              {sessionUser.id === answer.User?.id &&
                 <button className='delete-answer-button' onClick={deleteAnswerOnClick}><i id={answer.id} className='fa-solid fa-trash-can fa-xl' /></button>
               }
             </div>
