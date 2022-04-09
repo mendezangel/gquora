@@ -27,7 +27,7 @@ export default function SingleQuestionCard() {
         <div className='title-container'><h2 className='title-text'>{question?.title}</h2></div>
         <div className='author-container'>
           <div className='author-name'>
-            {question?.User.username}
+            {question?.User?.username}
           </div>
           {ownerOfQuestion && <SettingsButton />}
         </div>
