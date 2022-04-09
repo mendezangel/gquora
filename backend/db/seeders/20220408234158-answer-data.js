@@ -118,6 +118,121 @@ module.exports = {
         questionId: 28,
         answer: "In my opinion its a tie between No Mans Sky and Cyber Punk 2077. Both games fell flat because developers did not follow through on their promises on what the games were going to be like. The devs of No Mans Sky straight up cut 70% of the features out of the game and straight up lied to it consumer base. While Cyber punk was n unplayable buggy mess when it was released with a very bland story line and boring characters."
       },
+      {
+        userId: 1,
+        questionId: 29,
+        answer: "Yeah… don't play"
+      },
+      {
+        userId: 2,
+        questionId: 30,
+        answer: "You want to simply do research. Some believe that to build a PC you have to spend an arm and a leg, and this is far from the case."
+      },
+      {
+        userId: 3,
+        questionId: 30,
+        answer: "You begin with how much you actually want to spend. After figuring out the budget, you will begin to see where you want to prioritize that money. I know there's a lot of things to consider, cpu, gpu, memory, RAM, it can be scary. But I have broken it down to a very simple guide(just for beginners, for people getting into pc)"
+      },
+      {
+        userId: 2,
+        questionId: 30,
+        answer: "First obviously you need to know the components Such as CPU, motherboard, GPU, SSD,HDD, HDMI, Display port, etc. After that it's about your budget!!! Once you have a desired spending limit simply begin to see how much parts cost. And once you think you have it all figured out… you go to a prebuilt pc store such as desert storm where they build it for you. Seriously, if you don't have time to figure it out and expected a guide on the internet to help you build a pc, without you actually trying it for yourself, because you have  always have been blessed with the simplicity of consoles, then go where they do all the hard stuff and buy “a console” you will have the best thing within your budget with 0% of the work. Ideal for those who know nothing and DONT have time to do something about it."
+      },
+      {
+        userId: 1,
+        questionId: 31,
+        answer: "So it appears a fellow brother has a paranoia of a mimic…"
+      },
+      {
+        userId: 3,
+        questionId: 31,
+        answer: "It's because he's trying to wake up a forgotten enemy."
+      },
+      {
+        userId: 3,
+        questionId: 31,
+        answer: "Maybe he’s broken?"
+      },
+      {
+        userId: 1,
+        questionId: 31,
+        answer: "Filthy casual, real souls players know by the sound it makes."
+      },
+      {
+        userId: 2,
+        questionId: 32,
+        answer: "Nah, just let him figure it out, and don't put any effort in it."
+      },
+      {
+        userId: 2,
+        questionId: 33,
+        answer: "First off, let me welcome you to a very painful and excruciating journey of becoming the elden lord. You will need to face several impossible enemies. But do not fret you technically cannot die until you have completed the quest. You can fail  as many times as you'd like but you will need to beat every boss at least once(I mean you can't just beat the main bosses and call it a day amirite?)."
+      },
+      {
+        userId: 1,
+        questionId: 33,
+        answer: "You will face dragons, giants, giant statues, giant statue dragons, and of course Murika(that's like the god of this world or something??)"
+      },
+      {
+        userId: 2,
+        questionId: 1,
+        answer: 'Yoshi'
+      },
+      {
+        userId: 3,
+        questionId: 2,
+        answer: 'The main antagonists that spiderman faces are a villainous faction called “The Sinister Six.”'
+      },
+      {
+        userId: 2,
+        questionId: 3,
+        answer: 'Bonfires serve as a resting station and a checkpoint.'
+      },
+      {
+        userId: 3,
+        questionId: 4,
+        answer: 'Dark Link.'
+      },
+      {
+        userId: 3,
+        questionId: 5,
+        answer: 'Raichu.'
+      },
+      {
+        userId: 3,
+        questionId: 6,
+        answer: 'master ball'
+      },
+      {
+        userId: 1,
+        questionId: 34,
+        answer: 'Both Sisters are part of a group called “The Inquisitors” who hunt down all the remaining jedi. '
+      },
+      {
+        userId: 2,
+        questionId: 35,
+        answer: 'Yes, they do the red one is Blinky, pink is Pinky, aqua is Inky, and orange is Clyde.'
+      },
+      {
+        userId: 2,
+        questionId: 36,
+        answer: 'toad'
+      },
+      {
+        userId: 3,
+        questionId: 37,
+        answer: 'doctor eggman'
+      },
+      {
+        userId: 1,
+        questionId: 38,
+        answer: 'Once you’re in a game, you need to pick up the bubble shield and press LB on your Xbox controller to activate it.'
+      },
+      {
+        userId: 3,
+        questionId: 39,
+        answer: 'The huge rings are called Halos, and they are a network of colossal superweapons that can kill all living beings in the galaxy.'
+      },
     ], {});
   },
 

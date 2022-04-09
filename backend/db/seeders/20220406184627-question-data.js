@@ -11,33 +11,33 @@ module.exports = {
     return queryInterface.bulkInsert('Questions', [
       {
         ownerId: 1,
-        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+        title: 'mario\'s sidekick',
+        description: 'What is the name of Mario’s dinosaur sidekick?'
       },
       {
         ownerId: 2,
-        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+        title: 'antagonists in spiderman',
+        description: 'Who are the main antagonists in Marvel\'s Spiderman (PS4)?'
       },
       {
         ownerId: 3,
-        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+        title: 'bonfires in dark souls',
+        description: 'What do bonfires serve as in Dark Souls?'
       },
       {
         ownerId: 1,
-        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+        title: 'links doppelganger',
+        description: 'What is the name of Link\'s evil doppelganger from Zelda II: The Adventure of Link?'
       },
       {
         ownerId: 1,
-        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+        title: 'pikachu evolution',
+        description: 'What Pokémon does Pikachu evolve into?'
       },
       {
         ownerId: 1,
-        title: 'fringilla est ullamcorper eget nulla facilisi etiam dignissim diam quis',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisis volutpat est velit egestas dui id ornare arcu odio. Massa ultricies mi quis hendrerit dolor magna. Eros in cursus turpis massa. Enim nec dui nunc mattis enim ut tellus elementum.'
+        title: 'pokeballs',
+        description: 'What is the most effective Poke Ball in the game?'
       },
       {
         ownerId: 2,
@@ -148,6 +148,61 @@ module.exports = {
         ownerId: 2,
         title: 'disappointing games',
         description: "What was the most disappointing game of all time?"
+      },
+      {
+        ownerId: 3,
+        title: 'forknife',
+        description: "Hey I just started playing Fortnite, any advice for new players?"
+      },
+      {
+        ownerId: 1,
+        title: 'pc gaming',
+        description: "So I am currently looking into getting into PC gaming, how do I begin that process?"
+      },
+      {
+        ownerId: 2,
+        title: 'elden ring boxes',
+        description: "My boyfriend has been spending hours playing the elden ring and randomly hitting chest or boxes? Does anyone know why?"
+      },
+      {
+        ownerId: 3,
+        title: 'friend is making a website',
+        description: "My friend is making a website to present to his class that’s due on Monday(it’s about video games). Anything I can do to help him?"
+      },
+      {
+        ownerId: 3,
+        title: "lost and maidenless",
+        description: "So it would appear that I am maidenless and in the middle of nowhere and for some reason I must obtain the elden ring? How exactly would I accomplish this?"
+      },
+      {
+        ownerId: 2,
+        title: 'jedi fallen order',
+        description: "In Star Wars Jedi: Fallen Order, who is the Second Sister and Ninth Sister?"
+      },
+      {
+        ownerId: 1,
+        title: 'pac man ghosts',
+        description: "Do the four ghosts in Pac-Man have names?"
+      },
+      {
+        ownerId: 3,
+        title: 'mushroom mario character',
+        description: "Which Mario character is a living mushroom?"
+      },
+      {
+        ownerId: 2,
+        title: 'sonic enemy',
+        description: "Who is Sonic’s greatest enemy?"
+      },
+      {
+        ownerId: 3,
+        title: 'bubble shields in halo 3',
+        description: "How do you use the bubble shield in Halo 3?"
+      },
+      {
+        ownerId: 1,
+        title: 'ring shaped objects in halo',
+        description: "What are the huge ring-shaped objects in Halo?"
       }
     ], {});
   },
