@@ -24,7 +24,7 @@ export default function QuestionCard() {
                 </Link>
               </div>
               <div className='user-container'>
-                <p>{question.User.username}</p>
+                <p>{question.User?.username}</p>
               </div>
             </div>
             <div className='question-body'>
