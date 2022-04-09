@@ -13,7 +13,7 @@ export default function SingleQuestionCard() {
   const sessionUser = useSelector(state => state.session.user);
   const question = useSelector(state => state.question[id]);
 
-  const ownerOfQuestion = sessionUser.id === question?.ownerId;
+  const ownerOfQuestion = sessionUser?.id === question?.ownerId;
 
   useEffect(() => {
     dispatch(getOneQuestion(id));
