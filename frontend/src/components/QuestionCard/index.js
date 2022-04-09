@@ -24,9 +24,7 @@ export default function QuestionCard() {
                 </Link>
               </div>
               <div className='user-container'>
-                <Link to={`/users/${question.ownerId}`}>
-                  <p>{question.User.username}</p>
-                </Link>
+                <p>{question.User.username}</p>
               </div>
             </div>
             <div className='question-body'>

@@ -27,9 +27,7 @@ export default function SingleQuestionCard() {
         <div className='title-container'><h2 className='title-text'>{question?.title}</h2></div>
         <div className='author-container'>
           <div className='author-name'>
-            <Link to={`/users/${question?.User.id}`}>
-              {question?.User.username}
-            </Link>
+            {question?.User.username}
           </div>
           {ownerOfQuestion && <SettingsButton />}
         </div>

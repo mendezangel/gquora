@@ -67,7 +67,7 @@ export default function AnswersUnderQuestion() {
           return (
             <div className='answer-card' key={answer.id}>
               <div className='answer-card-user'>
-                <Link to={`/users/${answer.User.id}`}>{answer.User.username}</Link>
+                {answer.User.username}
               </div>
               <div className='answer-card-description'>{answer.answer}</div>
               {sessionUser.id === answer.User.id &&
