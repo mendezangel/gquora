@@ -58,15 +58,36 @@ router.delete('/:id', asyncHandler(async (req, res) => {
   return res.json({ id: question.id }); //responding with question id
 }));
 
-router.put('/:id', asyncHandler(async (req, res) => {
+const validateUpdate = [
+  check('title')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a title.')
+    .isLength({ max: 75 })
+    .withMessage('Title cannot exceed character count of 75.'),
+  check('description')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Description cannot be empty')
+    .isLength({ max: 10000 })
+    .withMessage('Description cannot exceed character count of 10,000')
+]
+
+router.put('/:id', validateUpdate, asyncHandler(async (req, res) => {
   const id = +req.params.id;
   delete req.body.id;
   const question = await Question.findByPk(id);
-  question.update({
-    title: req.body.title,
-    description: req.body.description
-  });
-  return res.json(question);
+
+  const validatorErrors = validationResult(req);
+  if (validatorErrors.isEmpty()) {
+    question.update({
+      title: req.body.title,
+      description: req.body.description
+    });
+    return res.json(question);
+  }
+  const errors = validatorErrors.array().map(error => error.msg);
+  return res.json({ errors, message: 'Failure' })
 }));
 
 module.exports = router;

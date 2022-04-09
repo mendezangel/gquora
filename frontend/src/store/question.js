@@ -94,6 +94,10 @@ export const updateQuestion = data => async dispatch => {
     body: JSON.stringify(data)
   });
 
+  // if (response.message) {
+  //   console.log(response.message)
+  // }
+
   if (response.ok) {
     const question = await response.json();
     dispatch(updateOne(question));
