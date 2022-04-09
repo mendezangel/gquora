@@ -25,6 +25,12 @@ export default function LoginFormPage() {
         if (data && data.errors) setErrors(data.errors);
       });
   }
+
+  const demoUser = e => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential: 'fng', password: 'fngpassword' }));
+  }
+
   return (
     <>
       <div className='background-image-container'>
@@ -64,6 +70,7 @@ export default function LoginFormPage() {
           </div>
 
           <button type="submit" className='login-button'>Log In</button>
+          <button className='demo-user-button' onClick={demoUser}>Demo User</button>
           <Link to='/signup' className='sign-up-link'>Don't have an account?</Link>
         </form>
       </div>
