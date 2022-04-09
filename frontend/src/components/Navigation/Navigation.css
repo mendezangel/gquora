@@ -44,7 +44,8 @@
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
-.dropdown>.link:focus+.dropdown-menu {
+.dropdown.active>.link+.dropdown-menu {
+  /* > direct child + adjacent sibling */
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
@@ -56,7 +57,7 @@
   color: #CECAC4;
 }
 
-.dropdown>.link:focus,
+.dropdown.active>.link,
 .link:hover {
   cursor: pointer;
   color: #CECAC4;
@@ -85,4 +86,20 @@
 
 .user-icon-btn {
   margin-top: 10px;
+}
+
+.profile-dropdown {
+  list-style: none;
+}
+
+.dropdown-logout-button {
+  border: none;
+  background: none;
+  font: inherit;
+  color: #CECAC4;
+}
+
+.dropdown-logout-button:hover {
+  color: gray;
+  cursor: pointer;
 }

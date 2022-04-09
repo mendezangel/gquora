@@ -63,7 +63,7 @@ export default function LoginFormPage() {
             />
           </div>
 
-          <button type="submit" class='login-button'>Log In</button>
+          <button type="submit" className='login-button'>Log In</button>
           <Link to='/signup' className='sign-up-link'>Don't have an account?</Link>
         </form>
       </div>

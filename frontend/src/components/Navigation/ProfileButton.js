@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import './script.js';
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -8,22 +9,22 @@ function ProfileButton() {
 
   const user = useSelector(state => state.session.user);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
-  useEffect(() => {
-    if (!showMenu) return;
+  // useEffect(() => {
+  //   if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
+  //   const closeMenu = () => {
+  //     setShowMenu(false);
+  //   };
 
-    document.addEventListener('click', closeMenu);
+  //   document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  //   return () => document.removeEventListener("click", closeMenu);
+  // }, [showMenu]);
 
   const logout = async (e) => {
     e.preventDefault();
@@ -33,19 +34,17 @@ function ProfileButton() {
   return (
     <>
       <div className="dropdown" data-dropdown>
-        <button onClick={openMenu} className='user-icon-btn link' data-dropdown-button>
-          <i className="fas fa-user-circle fa-xl" />
+        <button className='user-icon-btn link' >
+          <i className="fas fa-user-circle fa-xl" data-dropdown-button />
         </button>
         <div className="dropdown-menu">
-          {showMenu && (
-            <ul className="profile-dropdown">
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
-                <button onClick={logout}>Log Out</button>
-              </li>
-            </ul>
-          )}
+          <ul className="profile-dropdown">
+            <li>{user?.username}</li>
+            <li>{user?.email}</li>
+            <li>
+              <button onClick={logout} className='dropdown-logout-button'>Log Out</button>
+            </li>
+          </ul>
         </div>
       </div>
       {/*       

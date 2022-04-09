@@ -77,7 +77,9 @@ body {
   border: 1px solid silver;
   margin: 10px 3px 18px 0;
   padding: 0 10px;
+  transition: .2s ease-in-out;
 }
+
 
 .login-form .form-input-password {
   width: 100%;
@@ -87,6 +89,7 @@ body {
   border: 1px solid silver;
   margin: 10px 0 18px 0;
   padding: 0 10px;
+  transition: .2s ease-in-out;
 }
 
 .login-form .login-button {
@@ -115,4 +118,10 @@ body {
 
 .error-list-container {
   margin-bottom: 8px;
+}
+
+.form-input-credential:focus,
+.form-input-password:focus {
+  outline: none;
+  border: solid #004daa 1px;
 }

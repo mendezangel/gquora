@@ -10,7 +10,7 @@ router.get('/', asyncHandler(async (req, res, next) => {
   const questions = await Question.findAll({
     include: ['User'],
     order: [['updatedAt', 'DESC']],
-    limit: 10
+    limit: 50
   });
   return res.json(questions);
 }));
