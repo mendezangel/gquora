@@ -23,8 +23,8 @@ const validateAnswer = [
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Answer cannot be empty.')
-    .isLength({ max: 10000 })
-    .withMessage('Answer cannot exceed character count of 10,000')
+    .isLength({ max: 1000 })
+    .withMessage('Answer cannot exceed character count of 1000')
 ];
 
 router.post('/', validateAnswer, asyncHandler(async (req, res) => {

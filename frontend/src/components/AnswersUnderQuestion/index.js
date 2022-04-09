@@ -11,7 +11,7 @@ export default function AnswersUnderQuestion() {
   const storeAnswers = useSelector(state => state.answer.list);
 
   const [description, setDescription] = useState('');
-  const [error, setError] = useState();
+  const [errors, setErrors] = useState([]);
 
   const updateDescription = e => setDescription(e.target.value);
 
@@ -26,21 +26,19 @@ export default function AnswersUnderQuestion() {
     const userId = sessionUser.id;
     const data = { userId, questionId, answer: description };
     const answer = await dispatch(newAnswer(data));
-    // console.log(answer);
     if (answer.message === 'Success') {
       setDescription('');
-      setError('');
+      setErrors([]);
       await dispatch(getAnswer(questionId));
     } else {
-      setError(answer.errors[0]);
+      setErrors(answer.errors);
     }
   }
 
-
-  const inputPlaceholder = () => {
-    if (error) return error;
-    return 'Add an answer...'
-  }
+  // const inputPlaceholder = () => {
+  //   if (error) return error;
+  //   return 'Add an answer...'
+  // }
 
   const deleteAnswerOnClick = async (e) => {
     e.preventDefault();
@@ -54,7 +52,10 @@ export default function AnswersUnderQuestion() {
       <div className='answer-input-section'>
         <form className='answer-question-form' onSubmit={onSubmit}>
           <div className='answer-input-container'>
-            <input className='answer-input' onChange={updateDescription} value={description} placeholder={inputPlaceholder()} />
+            <textarea className='answer-input' type='text' onChange={updateDescription} value={description} placeholder='Add an answer...' />
+            {errors?.map(error => {
+              if (error.includes('Answer cannot be empty.')) return (<p key={error} className="answer-error">{error}</p>)
+            })}
           </div>
           <div className='submit-answer-button-container'>
             <button type='submit' className='submit-answer-button' >post</button>

@@ -39,11 +39,11 @@ export default function LoginFormPage() {
       <div className='login-form-container'>
         <form onSubmit={handleSubmit} className='login-form'>
           <h1>Login</h1>
-          <div className='error-list-container'>
+          {/* <div className='error-list-container'>
             <ul className='error-list'>
               {errors.map((error, idx) => <li key={idx}>{error}</li>)}
             </ul>
-          </div>
+          </div> */}
           <div className='form-group'>
             <label>
               Username or Email
@@ -53,8 +53,13 @@ export default function LoginFormPage() {
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
               className='form-input-credential'
-              required
+            // required
             />
+            {errors?.map(error => {
+              if (error.includes('Please provide a valid email')) return (<p className="signup-error" key={error}>{error}</p>)
+              if (error.includes('The provided credentials'))
+                return (<p className='signup-error' key={error}>{error}</p>)
+            })}
           </div>
           <div className='form-group'>
             <label>
@@ -65,8 +70,13 @@ export default function LoginFormPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className='form-input-password'
-              required
+            // required
             />
+            {errors?.map(error => {
+              if (error.includes('Please provide a password')) return (<p className="signup-error" key={error}>{error}</p>)
+              if (error.includes('The provided credentials'))
+                return (<p className='signup-error' key={error}>{error}</p>)
+            })}
           </div>
 
           <button type="submit" className='login-button'>Log In</button>
