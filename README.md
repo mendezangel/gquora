@@ -7,7 +7,7 @@ An application for gaming questions and answers. Inspired by Quora.
 * Node.js
 * CSS3
 
-Index:
+## Index:
   * [Feature List](https://github.com/mendezangel/gquora/wiki/MVP-Feature-List)
   * [Database Schema](https://github.com/mendezangel/gquora/wiki/Database-Schema)
   * [Frontend Routes](https://github.com/mendezangel/gquora/wiki/Frontend-Routes)
