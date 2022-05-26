@@ -1,6 +1,9 @@
 # gquora
 An application for gaming questions and answers. Inspired by Quora.
 
+## Live Link
+https://gquora.herokuapp.com/
+
 ## Technologies used:
 * React.js
 * Express.js
