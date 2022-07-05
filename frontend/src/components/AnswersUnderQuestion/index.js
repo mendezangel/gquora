@@ -13,7 +13,7 @@ export default function AnswersUnderQuestion() {
 
   const [description, setDescription] = useState('');
   const [errors, setErrors] = useState([]);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   const closeModal = () => setOpen(false);
 
@@ -73,20 +73,23 @@ export default function AnswersUnderQuestion() {
               </div>
               <div className='answer-card-description'>{answer.answer}</div>
               {sessionUser.id === answer.User?.id &&
-                <Popup
-                  trigger={<button className='delete-answer-button' /*onClick={deleteAnswerOnClick}*/ ><i id={answer.id} className='fa-solid fa-trash-can fa-xl' /></button>}
-                  closeOnDocumentClick={true}
-                  modal
-                >
-                  <div className='delete-answer-container'>
-                    <div className='delete-answer-question'>
-                      <h2>Delete your answer?</h2>
+                <div>
+                  <button className='delete-answer-button' onClick={() => setOpen(o => !o)} ><i id={answer.id} className='fa-solid fa-trash-can fa-xl' /></button>
+                  <Popup
+                    open={open}
+                    onClose={closeModal}
+                    closeOnDocumentClick={true}
+                    modal
+                  >
+                    <div className='delete-answer-container'>
+                      <div className='delete-answer-question'>
+                        <h2>Delete your answer?</h2>
+                      </div>
+                      <div className='yes-delete' onClick={deleteAnswerOnClick} id={answer.id} >Delete</div>
+                      <div className='no-delete' onClick={closeModal}>Cancel</div>
                     </div>
-                    <div className='yes-delete'>Delete</div>
-                    <div className='no-delete'>Cancel</div>
-                  </div>
-                </Popup>
-
+                  </Popup>
+                </div>
               }
             </div>
           )
