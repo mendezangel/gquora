@@ -31,6 +31,7 @@ export default function AnswersUnderQuestion() {
     if (answer.message === 'Success') {
       setDescription('');
       setErrors([]);
+      setOpen(false)
       await dispatch(getAnswer(questionId));
     } else {
       setErrors(answer.errors);
@@ -45,6 +46,7 @@ export default function AnswersUnderQuestion() {
   const deleteAnswerOnClick = async (e) => {
     e.preventDefault();
     const answerId = e.target.id;
+    setOpen(false)
     await dispatch(deleteAnswer(answerId));
     await dispatch(getAnswer(questionId));
   }
@@ -78,7 +80,8 @@ export default function AnswersUnderQuestion() {
                   <Popup
                     open={open}
                     onClose={closeModal}
-                    closeOnDocumentClick={true}
+                    // onClick={setOpen(true)}
+                    closeOnDocumentClick={false}
                     modal
                   >
                     <div className='delete-answer-container'>

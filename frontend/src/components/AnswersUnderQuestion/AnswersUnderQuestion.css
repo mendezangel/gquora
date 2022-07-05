@@ -148,10 +148,12 @@ h2 {
 
 .delete-answer-container .yes-delete:hover {
   background-color: #181A1B;
+  color: gray;
 }
 
 .delete-answer-container .no-delete:hover {
   background-color: #181A1B;
+  color: gray;
 }
 
 [role='tooltip'].popup-content {
