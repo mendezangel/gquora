@@ -13,5 +13,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "https://gquora.herokuapp.com/" # Change this
+          heroku_app_name: "gquora" # Change this
           heroku_email: "id.angelmendez@gmail.com" # Change this
