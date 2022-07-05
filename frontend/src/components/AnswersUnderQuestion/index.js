@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
+import Popup from 'reactjs-popup';
 import { getAnswer, newAnswer, deleteAnswer } from '../../store/answer';
 import './AnswersUnderQuestion.css';
 
@@ -12,14 +13,15 @@ export default function AnswersUnderQuestion() {
 
   const [description, setDescription] = useState('');
   const [errors, setErrors] = useState([]);
+  const [open, setOpen] = useState(false)
+
+  const closeModal = () => setOpen(false);
 
   const updateDescription = e => setDescription(e.target.value);
 
   useEffect(() => {
     dispatch(getAnswer(questionId));
   }, [dispatch]);
-
-  // console.log('these are the answers', answers)
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +73,20 @@ export default function AnswersUnderQuestion() {
               </div>
               <div className='answer-card-description'>{answer.answer}</div>
               {sessionUser.id === answer.User?.id &&
-                <button className='delete-answer-button' onClick={deleteAnswerOnClick}><i id={answer.id} className='fa-solid fa-trash-can fa-xl' /></button>
+                <Popup
+                  trigger={<button className='delete-answer-button' /*onClick={deleteAnswerOnClick}*/ ><i id={answer.id} className='fa-solid fa-trash-can fa-xl' /></button>}
+                  closeOnDocumentClick={true}
+                  modal
+                >
+                  <div className='delete-answer-container'>
+                    <div className='delete-answer-question'>
+                      <h2>Delete your answer?</h2>
+                    </div>
+                    <div className='yes-delete'>Delete</div>
+                    <div className='no-delete'>Cancel</div>
+                  </div>
+                </Popup>
+
               }
             </div>
           )
